@@ -48,7 +48,7 @@
                 <a href="<?php echo U('Index/index');?>" class="nav-item-link">外卖</a>
                 </li>
                 <li class="nav-item " id="order">
-                <a href="<?php echo U('User/address');?>" class="nav-item-link">我的订单</a>
+                <a href="<?php echo U('User/order');?>" class="nav-item-link">我的订单</a>
                 </li>
                 <li class="nav-item " id="contact">
                 <a href="/waimai?qt=contact" class="nav-item-link">联系我们</a>
@@ -81,7 +81,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 
-<script type="text/javascript" src="/sjswaimai/Public//uni_armorwidget_wrapper.js"></script>
+<script type="text/javascript" src="/sjswaimai/Public/js/uni_armorwidget_wrapper.js"></script>
 
 <script type="text/javascript" src="/sjswaimai/Public/jquery-3.1.0.js"></script>
 
@@ -164,18 +164,20 @@
 	
 		<?php if(is_array($address)): $i = 0; $__LIST__ = $address;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="addr-item addr-add"  data-node="addrAdd" >
 				<div class="summary">
-					<h3><?php echo ($vo['aname']); ?><span>|</span><?php echo ($vo['telephone']); ?>
-						<?php if(($vo["ifdefault"]) == "1"): ?><span style="color:#999">默认地址</span><?php endif; ?>
+					<h3><span><?php echo ($vo['aname']); ?></span><span>|</span><span><?php echo ($vo['telephone']); ?></span>
+						<?php if(($vo["ifdefault"]) == "1"): ?><span style="color:#999">默认</span><?php endif; ?>
 					</h3>
 					<h4 ><?php echo ($vo['address']); ?> </h4>		
 
 				</div>
 				<div style="display:none;color:#f6c;">
-			        <a >设为默认地址</a><span>|</span>
-					<a >修改</a>
+			        <a class="add_default">设为默认地址</a><span>|</span>
+					<a class="add_modify">修改</a>
 					</a><span>|</span>
-					<a >删除</a>
+					<a class="add_delete">删除</a>
+					<div style="display:none"><?php echo ($vo['aid']); ?></div>
 				</div>
+				
 		</li><?php endforeach; endif; else: echo "" ;endif; ?>
 <li class="addr-item addr-add" data-node="addrAdd" >
 <a id="writeAddress"><center class="summary"><img src="/sjswaimai/Public/picture/address_add_b66a4e5.png">
@@ -224,14 +226,14 @@
 		   				<td valign="top">
 		   					<span class="l-label">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</span></td>               
 		   					 <td>                    
-		   					 	<input type="hidden" value="" name="adrr_id">                    
+		   					 	                    
 		   					 	<div class="form-group">                        
 		   					 		<div class="input-control">                            
-		   					 			<input type="text" name="user_name"  value="" class="placeholder-con" placeholder="请填写您的姓名，不能超过7个字符" pattern="[n{0,7}" required="required">                            
+		   					 			<input type="text" name="aname"  value="" class="placeholder-con" placeholder="请填写您的姓名" pattern="/^\s*[\u4e00-\u9fa5]{1,}[\u4e00-\u9fa5.·]{0,15}[\u4e00-\u9fa5]{1,}\s*$/" required="required">                            
 		   					 			<span style="color:#f6c">*</span>                        </div>                        
-		   					 		                    
+		   					 		        <div id="checkaname" class="error-msg v-hide">姓名不能少于2个字且不能超过7个字</div>               
 		   					 		</div>                    
-		   					 	                
+		   					 	             
 		   					</td>            
 		   				</tr>            
 		   				<tr>                
@@ -240,10 +242,10 @@
 		   					<td>                    
 		   						<div class="form-group">                        
 		   							<div class="input-control">                            
-		   								<input type="text" name="user_phone" placeholder="11位手机号" value="" class="placeholder-con">                            
+		   								<input type="text" name="telephone" placeholder="11位手机号" value="" class="placeholder-con">                            
 		   								<span style="color:#f6c">*</span>                        
 		   							</div>                        
-		   							<div class="error-msg v-hide">请填写正确的手机号</div>                    
+		   							<div id="checkphone"class="error-msg v-hide">请填写正确的手机号</div>                    
 		   						</div>                
 		   					</td>            
 		   				</tr>            
@@ -253,11 +255,11 @@
 		   						<div class="form-group">                        
 		   							<div class="input-control poi_address">                            
 		   								<i class="addr-icon-input"></i>                            
-		   								<input type="text" name="sug_address" placeholder="请输入小区、大厦或学校" value="" class="placeholder-con poi_address">                            
+		   								<input type="text" name="address" placeholder="请输入小区、大厦或学校" value="" class="placeholder-con poi_address">                            
 		   								<span style="color:#f6c">*</span>                                                        
 		   								<input type="hidden" name="hide_sug_address" value="-" class="hide_poi_address" poi_id="">                        
 		   							</div>                        
-		   							<div class="error-msg v-hide">请输入地址并在下拉框中进行选择</div>                       
+		   							<div id="checkaddress"class="error-msg v-hide">请输入地址</div>                       
 		   							<div class="s-search-container2 mod-search-hide mod-search-container"></div>                                            
 		   						</div>                
 		   					</td>            
@@ -278,7 +280,7 @@
 		   		<div class="form-group form-submit">            
 		   			<input type="button" style="background-color:#f6c"class="saveBtn" data-node="saveBtn" value="保存">                            
 		   			<input type="button" class="escBtn versa" value="取消">                    
-		   		</div>    
+		   		</div>   
 		   	</form>
 		   </div>
 		</div>
@@ -292,15 +294,152 @@
 	})
 	
 
-			$('.addr-item').mouseover(function(){
-				$(this).children()[1].style.display="block";
+	$('.addr-item').mouseover(function(){
+		$(this).children()[1].style.display="block";
 
-			})
-			$('.addr-item').mouseout(function(){
-				$(this).children()[1].style.display="none";
-			})
+	})
+	$('.addr-item').mouseout(function(){
+		$(this).children()[1].style.display="none";
+	})
 
+	$('input[name=aname]').blur(function(){
+		console.log(!isAname($(this).val()));
+		if(!isAname($(this).val())){
+			$('#checkaname')[0].style.visibility="visible";
+		}else{$('#checkaname')[0].style.visibility="hidden";}
+
+	})
+	$('input[name=telephone]').blur(function(){
+		
+		if(!isPhone($(this).val())){
+			$('#checkphone')[0].style.visibility="visible";
+		}else{$('#checkphone')[0].style.visibility="hidden";}
+
+	})
+	$('input[name=address]').blur(function(){
+		
+		if($(this).val()==''){
+			$('#checkaddress')[0].style.visibility="visible";
+		}else{$('#checkaddress')[0].style.visibility="hidden";}
+
+	})
+	$('input[value=保存]').click(function(){
+		if(isSubmit()){
+			aname = $("input[name=aname]").val();
+	        telephone = $("input[name=telephone]").val();
+	        address = $('input[name=address]').val();
+	        var data = {
+	            aname:aname,
+	            telephone:telephone,
+	            address:address,
+	            uid:'5',
+	            ifdefault:'0'
+	        };
+	        console.log(data);
+	        $.ajax({url:"<?php echo U('User/address_submit');?>",type:'POST',data:data,success:function(succ){
+	            
+	                    result = JSON.parse(succ);
+	                    if(result.result=='ok'){
+	                          alert('添加成功');
+	                          //localStorage.token = result.token;
+	                          window.location.reload();
+	                          // window.location.href="./home.html"; 
+	                    }else{alert('添加失败！');}
+	            }
+	        })
+    
+		}
+	})
+	$('.add_modify').click(function(){
+		if($(this).text()=="修改"){
+			aname = $(this).parent().prev().children().children().eq(0).text();
+			telephone = $(this).parent().prev().children().children().eq(2).text();
+			address = $(this).parent().prev().children().eq(1).text();
+			$(this).parent().prev().children().children().eq(0).html("<input type='text' size='13'value='"+aname+"''>");
+			$(this).parent().prev().children().children().eq(2).html("<input type='text' size='13'value='"+telephone+"''>");
+			$(this).parent().prev().children().eq(1).html("<input type='text' size='35'value='"+address+"''>");
+			$(this).text('保存');
+		}else{
+			aid = $(this).siblings().eq(4).text();
+			aname = $(this).parent().prev().children().children().eq(0).children().val();
+			telephone = $(this).parent().prev().children().children().eq(2).children().val();
+			address = $(this).parent().prev().children().eq(1).children().val();
 			
+			$(this).parent().prev().children().children().eq(0).html(aname);
+			$(this).parent().prev().children().children().eq(2).html(telephone);
+			$(this).parent().prev().children().eq(1).html(address);
+			$(this).text('修改');
+			var data = {
+				aid:aid,
+				aname:aname,
+				telephone:telephone,
+				address:address
+			}
+			$.ajax({url:"<?php echo U('User/address_modify');?>",type:'POST',data:data,success:function(succ){
+	            		
+	                    result = JSON.parse(succ);
+	                    if(result.result=='ok'){
+	                          alert('修改成功');
+	                          //localStorage.token = result.token;
+	                          
+	                          // window.location.href="./home.html"; 
+	                    }else{alert('修改失败！');}
+	            }
+	        })
+
+		}
+
+	})
+	$('.add_delete').click(function(){
+		aid = $(this).next().text();
+		var data = {
+			aid:aid
+		}
+		$.ajax({url:"<?php echo U('User/address_delete');?>",type:'POST',data:data,success:function(succ){
+	            
+	                    result = JSON.parse(succ);
+	                    if(result.result=='ok'){
+	                          alert('删除成功');
+	                          //localStorage.token = result.token;
+	                          window.location.reload();
+	                          // window.location.href="./home.html"; 
+	                    }else{alert('删除失败！');}
+	            }
+	        })
+	})
+	$('.add_default').click(function(){
+		aid = $(this).siblings().eq(4).text();
+		var data = {
+			aid:aid
+		}
+		$.ajax({url:"<?php echo U('User/address_default');?>",type:'POST',data:data,success:function(succ){
+	            
+	                    result = JSON.parse(succ);
+	                    console.log(result);
+	                    if(result.result=='ok'){
+	                          alert('设置成功');
+	                          //localStorage.token = result.token;
+	                          window.location.reload();
+	                          // window.location.href="./home.html"; 
+	                    }else{alert('设置失败！');}
+	            }
+	        })
+
+	})
+		function isAname(name) {
+		 	var pattern = /^[\u4e00-\u9fa5a\w]{2,6}$/;
+ 			return pattern.test(name);
+		}
+		function isPhone(name) {
+		 	var pattern = /^1[34578]\d{9}$/;
+ 			return pattern.test(name);
+		}
+		function isSubmit(){
+			if(isAname($('input[name=aname]').val())&&isPhone($('input[name=telephone]').val())&&($('input[name=address]').val()!=='')){
+				return true;
+			}else{return false;}
+		}
+
 </script>
 
 </body></html>

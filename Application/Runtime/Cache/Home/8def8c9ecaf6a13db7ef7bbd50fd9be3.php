@@ -48,7 +48,7 @@
                 <a href="<?php echo U('Index/index');?>" class="nav-item-link">外卖</a>
                 </li>
                 <li class="nav-item " id="order">
-                <a href="<?php echo U('User/address');?>" class="nav-item-link">我的订单</a>
+                <a href="<?php echo U('User/order');?>" class="nav-item-link">我的订单</a>
                 </li>
                 <li class="nav-item " id="contact">
                 <a href="/waimai?qt=contact" class="nav-item-link">联系我们</a>
