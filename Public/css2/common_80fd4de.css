@@ -1,0 +1,82 @@
+﻿.p-flex {
+    display: table
+}
+
+* {
+    margin: 0;
+    padding: 0
+}
+
+body {
+    font: 400;
+    font-family: "Microsoft YaHei",Helvetica,Arial,sans-serif
+}
+
+ul {
+    list-style: none
+}
+
+a:hover {
+    text-decoration: none
+}
+
+.announce {
+    position: relative
+}
+
+.x-a-none {
+    text-decoration: none
+}
+
+.x-a-none:hover,.x-a-none:active {
+    text-decoration: none
+}
+
+.common-widget-backtop {
+    position: fixed;
+    _position: absolute;
+    right: 50%;
+    bottom: 20px;
+    text-indent: -9999px;
+    margin-right: -600px;
+    outline: 0
+}
+
+.common-widget-backtop .back-top-action {
+    display: block;
+    width: 65px;
+    height: 60px;
+    margin-top: 5px;
+    background: url(../images/back_action_f2a00fc.png) no-repeat;
+    background-position: 0 0
+}
+
+.common-widget-backtop .back-top-action:hover {
+    background-position: -75px 0
+}
+
+.common-widget-backtop .appdown {
+    width: 26px;
+    margin-right: 45px
+}
+
+.common-widget-backtop .appdown-img {
+    background: url(../images/planetmap_icon_8732c31.png) no-repeat;
+    width: 65px;
+    height: 60px;
+    margin-top: 5px
+}
+
+.common-widget-backtop .appdown-smll {
+    background: url(../images/appdown_sm_41b4c09.png) no-repeat;
+    width: 100px;
+    height: 100px
+}
+
+.common-widget-backtop .v-hide {
+    visibility: hidden
+}
+
+.common-widget-backtop .above-footer {
+    bottom: 210px
+}

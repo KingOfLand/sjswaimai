@@ -1,0 +1,288 @@
+{__NOLAYOUT__}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="icon" href="http://waimai.baidu.com/static/forpc/favicon.ico" mce_href="http://waimai.baidu.com/static/forpc/favicon.ico" type="image/x-icon">
+    <title>百度外卖商户中心</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css2/main_5d1e2f0.css"/>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css2/common_80fd4de.css"/>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css2/settled_7a7272a.css"/>
+
+    <link href="__PUBLIC__/css2/bootstrap.css" rel="stylesheet">
+    <link href="__PUBLIC__/css2//city-picker.css" rel="stylesheet">
+    <link href="__PUBLIC__/css2//main.css" rel="stylesheet">
+
+    <script src="__PUBLIC__/js2/jquery.js"></script>
+    <script src="__PUBLIC__/js2/bootstrap.js"></script>
+    <script src="__PUBLIC__/js2/city-picker.data.js"></script>
+    <script src="__PUBLIC__/js2/city-picker.js"></script>
+
+</head>
+<body class="metro">
+    <div class="sp-body">
+        <script type="text/javascript" src="__PUBLIC__/js2/d282a943397c4d18beb7fd948281883b.js"></script>
+        <div class="settled">
+            <header class="header">
+                <div class="ui-width header-wrap">
+                <figure>
+                <a href="/waimai" class="wm-logo">百度外卖</a>
+                </figure>
+                <span>商户入驻申请</span>
+                </div>
+            </header>
+            <div class="settled-progress">
+                <ul>
+                    <li class="active">
+                        1.选择店铺位置
+                    </li>
+                    <li>
+                        <span class="arrow"></span>
+                         2.填写基本信息
+                    </li>
+                    <li>
+                        <span class="arrow"></span>
+                        3.提交完成
+                    </li>
+                </ul>
+            </div>
+            <div class="settled-position  ">
+                <div class="settled-position-container ui-width panel-height">
+                    <header class="panel-head">选择店铺位置<span>（位置准确度将影响审核速度，请认真填写）</span></header>
+                    <!-- <div class="map-container"> -->
+                        <div class="container">
+                            <div class="docs-methods">
+                                <form class="form-inline">
+                                    <div id="distpicker">
+                                        <div class="form-group">
+                                            <div style="position: relative;">
+                                                <input id="city-picker3" class="form-control" readonly type="text" value="江苏省/常州市/溧阳市" data-toggle="city-picker">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-warning" id="reset" type="button">重置</button>
+                                            <button class="btn btn-success" id="destroy" type="button">提交</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    <!-- </div> -->
+                </div>
+            </div>
+            <div class="settled-basicinfo ui-width " >
+                <header class="panel-head">填写基本信息
+                <span>（带<em style="color:red">*</em>为必填，为了便于审核通过，请如实填写）</span>
+                </header>
+                <div class="form join-table" data-node="join_table">
+                    <div class="row">
+                        <div class="" data-node="half">
+                            <label><span class="required">*</span>店铺位置：</label>
+                            <input readonly="readonly" name="poi_name" data-node="poi_name"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="" data-node="half">
+                        <label><span class="required">*</span>详细地址：</label>
+                        <input type="text" value="" class="address" placeholder="xx(区)县xx路xx号" name="address" maxlength="50" data-check="address" data-errormsg="请填写详细地址，不能超过50个字符">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="half" data-node="half">
+                            <label><span class="required">*</span>商户名称：</label>
+                            <input type="text" value="" placeholder="公司或餐厅名称" name="shop_name" maxlength="50" data-check="shop_name" data-errormsg="请填写商户名称，不能超过20个字符">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="half" data-node="half">
+                            <label><span class="required">*</span>商户类型：　</label>
+                            <label class="radio">
+                                <input type="radio" value="2" name="shop_type" data-check="shop_type" data-errormsg="请选择商户类型">企业商户
+                            </label>
+                            <label class="radio">
+                            <input type="radio" value="1" name="shop_type" data-check="shop_type" data-errormsg="请选择商户类型">个体商户</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="half" data-node="half">
+                            <label><span class="required">*</span>经营范围：　</label>
+                            <label class="radio"><input type="radio" value="1" name="business_scope"
+                                                                        data-check="business_scope" data-errormsg="请选择经营范围"/>餐饮</label>
+                            <label class="radio"><input type="radio" value="2" name="business_scope"
+                                                                        data-check="business_scope" data-errormsg="请选择经营范围"/>超市购</label>
+                            <label class="radio"><input type="radio" value="4" name="business_scope"
+                                                                        data-check="business_scope" data-errormsg="请选择经营范围"/>鲜花</label>
+                            <label class="radio"><input type="radio" value="3" name="business_scope"
+                                                                        data-check="business_scope" data-errormsg="请选择经营范围"/>生活服务</label>
+                            <label class="radio"><input type="radio" value="5" name="business_scope"
+                                                                        data-check="business_scope" data-errormsg="请选择经营范围"/>生鲜水产</label>
+                            <label class="radio"><input type="radio" value="6" name="business_scope"
+                                                                        data-check="business_scope" data-errormsg="请选择经营范围"/>送药上门</label>
+                            <label class="radio"><input type="radio" value="7" name="business_scope"
+                                                                        data-check="business_scope" data-errormsg="请选择经营范围"/>早餐</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="half" data-node="half">
+                            <label class="name"><span class="required">*</span>联系人：</label>
+                            <input type="text" value="" placeholder="填写联系人" name="contact_man" maxlength="20" data-check="contact_man" data-errormsg="请填写联系人，不能超过20个字符">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="half" data-node="half">
+                            <label><span class="required">*</span>联系电话：</label>
+                            <input type="text" value="" placeholder="填写手机号" name="contact_phone" maxlength="11" data-check="contact_phone" data-errormsg="请填写11位手机号">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="half"  data-node="half">
+                            <label><span class="required">*</span>配送方式：　</label>
+                            <label class="radio">
+                            <input type="radio" value="1" name="delivery" data-check="delivery"
+                                                                        data-errormsg="请选择配送方式">希望百度物流提供配送</label>
+                            <label class="radio">
+                            <input type="radio" value="2" name="delivery" data-check="delivery"
+                                                                        data-errormsg="请选择配送方式">有能力自配送</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="half"  data-node="half">
+                            <label><span class="required">*</span>图片信息：</label>
+                            <div class="form-right pic-panel" data-pic-key="shop_front_url">
+                            <div class="pic-block" >
+                                <label>1.店铺门脸图</label>
+                                <div class="pic-container" data-title="门脸" data-node="shop_window_container"></div>
+                            </div>
+                            </div>
+                            <div class="form-right pic-panel" data-pic-key="shop_env_url">
+                                <div class="pic-block">
+                                    <label>2.店内环境图</label>
+                                    <div class="pic-container" data-title="店内环境" data-node="shop_env_container"></div>
+                                </div>
+                                <div class="pic-hint">
+                                    照片要求：<br/>
+                                    1.图片需现场采集<br/>
+                                    2.图片不得有水印、logo和其他网站信息
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+
+                        <div class="half"  data-node="half">
+                            <label><span class="required">*</span>资质信息：　　</label>
+                            <div class="form-right" data-node="aptitude_control">
+                                <label class="radio"><input type="radio" value="2" name="business_license" data-check="business_license" data-errormsg="请选择资质信息类型并上传照片">营业执照</label>
+                                <label class="radio"><input type="radio" value="2" name="business_license" data-check="business_license" data-errormsg="请选择资质信息类型并上传照片">餐饮服务许可证</label>
+                                <label class="radio"><input type="radio" value="2" name="business_license" data-check="business_license" data-errormsg="请选择资质信息类型并上传照片">其他资质<a href="javascript:void(0)" style="margin-left:5px;" data-node="description">说明</a></label>
+                                <label class="radio"><input type="radio" value="1" name="business_license" data-check="business_license" data-errormsg="请选择资质信息类型并上传照片" data-node="no_license">无资质</label>
+                                <div data-node="aptitude_panel">
+                                    <div class="form-right pic-panel" data-pic-key="business_license_url" style="display:none">
+                                        <div class="pic-block">
+                                            <div class="pic-container" data-title="营业执照" ></div>
+                                        </div>
+                                        <div class="pic-hint">
+                                            图片要求:<br/>
+                                            1.限1张图片<br/>
+                                            2.边框和国徽必须全部包含<br/>
+                                            3.证照文字清晰,不能用复印件<br/>
+                                            4.必须保证图片方向正确
+                                        </div>
+                                    </div>
+                                    <div class="form-right pic-panel" data-pic-key="restaurant_license_url" style="display:none">
+                                        <div class="pic-block">
+                                            <div class="pic-container" data-title="餐饮服务许可证" ></div>
+                                        </div>
+                                            <div class="pic-hint">
+                                            图片要求:<br/>
+                                            1.限1张图片<br/>
+                                            2.边框和国徽必须全部包含<br/>
+                                            3.证照文字清晰,不能用复印件<br/>
+                                            4.必须保证图片方向正确
+                                        </div>
+                                    </div>
+                                    <div class="form-right pic-panel" data-pic-key="other_license_url" style="display:none">
+                                        <div class="pic-block">
+                                            <div class="pic-container" data-title="证件图片" ></div>
+                                        </div>
+                                        <div class="pic-block">
+                                            <div class="pic-container" data-title="证件图片"></div>
+                                        </div>
+                                        <div class="pic-block">
+                                            <div class="pic-container" data-title="证件图片"></div>
+                                        </div>
+                                        <div class="pic-hint">
+                                            图片要求:<br/>
+                                            1.最少1张,最多3张<br/>
+                                            2.证照文字清晰,不能用复印件<br/>
+                                            3.必须保证图片方向正确
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="half" data-node="half">
+                            <label>我在其他平台开过店：</label>
+                            <input class="long" type="text" value="" placeholder="店铺链接" name="other_shop_url" >
+                        </div>
+                    </div>
+                    <div class="cautionTip hide" data-node="cautionTip"></div>
+                </div>
+                <div class="row-bottom">
+                    <button class="red-button formsubmit" data-node="formsubmit">提交申请</button>
+                    <a href="javascript:void(0);" data-node="back_to_position">&lt;返回上一步</a>
+                </div>
+                <div class="global-mask" data-node="aptitude_description">
+                    <div class="table-wrap" >
+                        <div class="clearfix"><span class="close">X</span></div>
+                        <div class="table-content">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="settled-finish ui-width">
+                <img src="__PUBLIC__/picture/success_38dad47.png" width="85" height="80"/>
+                <div>
+                    <h3>您的申请已成功提交!</h3>
+                    <p data-node="submit_result"></p>
+                    <button class="red-button" data-node="back_to_main" >返回首页</button>
+                </div>
+            </div>
+        </div>
+        <div class="common-widget-backtop" id="common-widget-backtop">
+            <div class="appdown" data-node="appdown">
+                <a id="backTop" class="back-top-action v-hide" href="javascript:;"></a>
+                <i data-node="appdown-img" class="appdown-img"  usemap="#planetmap" style="display:block;"></i>
+                <map name="planetmap" id="planetmap">
+                    <area shape="rect" coords="88,35,100,45"  id="appdownClose" href="javascript:;" />
+                </map>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+<!-- <script type="text/javascript" src="__PUBLIC__/js2/lib_20bd91c.js"></script> -->
+<!-- <script type="text/javascript" src="__PUBLIC__/js2/bmaplib_markertool_6f1947c.js"></script> -->
+<!-- <script type="text/javascript" src="__PUBLIC__/js2/settled_7efb33e.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js2/common_b009609.js"></script> -->
+</html>
+
+<script type="text/javascript">
+    $(document).ready(function(){  
+        $("#destroy").on("click",function(){
+            var address = $('#city-picker3').val();
+            address = address.replace(/\//g, "");
+            $(".settled-position-container").css("display","none");
+            $(".settled-basicinfo").css("display","block");
+            $(".settled-progress ul li ").eq(1).css("color","#666");
+            $("input[name='poi_name']").val(address);
+        })
+    });
+ 
+
+</script>
