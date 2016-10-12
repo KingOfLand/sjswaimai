@@ -18,7 +18,7 @@
     <header class="header">
         <div class="ui-width header-wrap">
             <figure>
-                <a href="/waimai" class="wm-logo">石景山外卖</a>
+                <a href="<?php echo U(Index/index);?>" class="wm-logo">石景山外卖</a>
             </figure>
             <div id="nav-search-section" class="nav-search-section">
                 <div class="s-first">
@@ -48,7 +48,7 @@
                 <a href="<?php echo U('Index/index');?>" class="nav-item-link">外卖</a>
                 </li>
                 <li class="nav-item " id="order">
-                <a href="<?php echo U('User/address');?>" class="nav-item-link">我的订单</a>
+                <a href="<?php echo U('User/order');?>" class="nav-item-link">我的订单</a>
                 </li>
                 <li class="nav-item " id="contact">
                 <a href="/waimai?qt=contact" class="nav-item-link">联系我们</a>
@@ -59,14 +59,22 @@
                 </ul>
             </nav>
             <div id="user_info" class="user-info-widget" style="1px solid blue;">
-                <div id="login_user_info" style="display:none;"></div>
+                <div id="login_user_info"  >
+                    <ul class="login_info">
+                        <li class='uname mn-lk-w'>
+                            <a href="<?php echo U('User/setting');?>"><h3></h3>
+                            </a>
+
+                        </li>
+                    </ul>
+                </div>
                 <div id="logout_user_info">
                     <ul class="logout_info">
                         <li>
-                            <a id="login" href="javascript:void(0);" >&nbsp;登录</a>
+                            <a id="login" href="<?php echo U('User/log');?>" >&nbsp;登录</a>
                         </li>
                         <li>
-                            <a id="logout_user_register" href="https://passport.baidu.com/v2/?reg&amp;regType=1&amp;tpl=ma" target="_blank">注册</a>
+                            <a id="logout_user_register" href="<?php echo U('User/register');?>" target="_blank">注册</a>
                         </li>
                     </ul>
                 </div>
@@ -74,6 +82,31 @@
             <script type="text/javascript" src="/sjswaimai/Public/js/d72620c3622f409cbbaf5128c91f3772.js"></script>
         </div>
     </header>
+
+    <script type="text/javascript">
+
+        token = localStorage.getItem('token');
+       data = {
+            token:token
+       }
+        $.ajax({url:"<?php echo U('User/checklog');?>",type:'POST',data:data,success:
+                function(succ){
+                        result = JSON.parse(succ);
+                        console.log(succ);
+                        if(result.result=='ok'){
+
+                              $('#login_user_info')[0].style.display="block";
+                              $('#login_user_info')[0].children[0].children[0].children[0].text='你好,'+result.nick;
+                              $('#logout_user_info')[0].style.display="none";
+                                    
+                        }else{
+                            $('#login_user_info')[0].style.display="none";
+                              $('#logout_user_info')[0].style.display="block";
+                        }
+                            
+                }
+            })
+    </script>
 
 <!DOCTYPE html>
 <!-- saved from url=(0053)http://waimai.baidu.com/waimai?qt=orderlist&type=wait -->
