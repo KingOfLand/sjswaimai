@@ -1,0 +1,794 @@
+﻿.widget-settled-basicinfo-imageblock {
+    position: relative;
+    background: #eee;
+    width: 110px;
+    height: 70px
+}
+
+.widget-settled-basicinfo-imageblock .btn {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    background: #666;
+    color: #fff;
+    float: left;
+    text-align: center
+}
+
+.widget-settled-basicinfo-imageblock .btn.del,.widget-settled-basicinfo-imageblock .btn.add {
+    display: none
+}
+
+.widget-settled-basicinfo-imageblock.has-del .btn {
+    width: 50%
+}
+
+.widget-settled-basicinfo-imageblock.has-del .btn.add-long {
+    display: none
+}
+
+.widget-settled-basicinfo-imageblock.has-del .btn.del,.widget-settled-basicinfo-imageblock.has-del .btn.add {
+    display: block
+}
+
+.widget-settled-basicinfo-imageblock.has-del .btn.del {
+    left: 74px;
+    border-left: 1px solid #eee
+}
+
+.widget-settled-basicinfo-imageblock .upload-btn {
+    width: 100%;
+    height: 100%
+}
+
+.widget-settled-basicinfo-imageblock .upload-btn input[type=file] {
+    width: 100%;
+    height: 100%;
+    outline: 0;
+    opacity: 0
+}
+
+.widget-settled-basicinfo-imageblock .upload-btn.empty:before,.widget-settled-basicinfo-imageblock .upload-btn.empty:after {
+    content: "";
+    position: absolute;
+    background: #ccc
+}
+
+.widget-settled-basicinfo-imageblock .upload-btn.empty:before {
+    width: 60px;
+    height: 6px;
+    left: 45px;
+    top: 62px
+}
+
+.widget-settled-basicinfo-imageblock .upload-btn.empty:after {
+    width: 6px;
+    height: 60px;
+    left: 72px;
+    top: 35px
+}
+
+.widget-settled-basicinfo-imageblock .upload-preview,.widget-settled-basicinfo-imageblock .loading {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0
+}
+
+.widget-settled-basicinfo-imageblock .upload-loading {
+    text-align: center
+}
+
+.widget-settled-basicinfo-imageblock .upload-loading img {
+    width: 125px;
+    height: 125px;
+    margin: 0 auto
+}
+
+.settled-basicinfo {
+    display: none;
+    margin-bottom: 50px!important
+}
+
+.settled-basicinfo .row-bottom {
+    text-align: center
+}
+
+.settled-basicinfo .row-bottom .formsubmit {
+    display: inline-block
+}
+
+.settled-basicinfo .join-table.form {
+    background: #fff;
+    padding: 0 40px;
+    overflow: auto;
+    position: relative
+}
+
+.settled-basicinfo .join-table.form label {
+    color: #000;
+    font-size: 14px
+}
+
+.settled-basicinfo .join-table.form span.required {
+    color: #ff2d4b
+}
+
+.settled-basicinfo .join-table.form .row {
+    margin: 20px 0
+}
+
+.settled-basicinfo .join-table.form .row .half {
+    position: relative;
+    display: inline-block;
+    margin-right: 20px
+}
+
+.settled-basicinfo .join-table.form .row .half .name {
+    margin-right: 14px
+}
+
+.settled-basicinfo .join-table.form .form-right {
+    display: inline-block;
+    vertical-align: top
+}
+
+.settled-basicinfo .join-table.form .form-right .pic-block,.settled-basicinfo .join-table.form .form-right .pic-hint {
+    display: inline-block;
+    margin: 0 15px 15px 0
+}
+
+.settled-basicinfo .join-table.form .form-right .pic-hint {
+    vertical-align: bottom
+}
+
+.settled-basicinfo .join-table.form .form-right .pic-container {
+    width: 150px;
+    height: 150px;
+    margin-top: 15px
+}
+
+.settled-basicinfo .join-table.form .caution {
+    margin-left: 8px
+}
+
+.settled-basicinfo .join-table.form .unuse {
+    background: #ACAEAE
+}
+
+.settled-basicinfo .join-table.form input[type=text] {
+    width: 350px;
+    height: 36px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    color: #000;
+    text-indent: .5em
+}
+
+.settled-basicinfo .join-table.form input[type=text].long {
+    width: 470px
+}
+
+.settled-basicinfo .join-table.form input[type=text]:disabled {
+    background: #eee
+}
+
+.settled-basicinfo .join-table.form input[readonly=readonly] {
+    width: 600px
+}
+
+.settled-basicinfo .join-table.form .radio {
+    font-size: 14px;
+    color: #000;
+    margin-right: 30px
+}
+
+.settled-basicinfo .cautionTip {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0
+}
+
+.settled-basicinfo .cautionTip .caution-dialog {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    margin: auto;
+    width: 500px;
+    height: 350px;
+    background: #000;
+    opacity: .7;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px
+}
+
+.settled-basicinfo .cautionTip .caution-dialog i {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background: url(../images/tipclose_372cd85.png) no-repeat center
+}
+
+.settled-basicinfo .cautionTip .caution-dialog .logo-img {
+    width: 110px;
+    height: 110px;
+    padding-top: 53px;
+    margin: 0 auto
+}
+
+.settled-basicinfo .cautionTip .caution-dialog .logo-img.error {
+    background: url(../images/error_10e5078.png) no-repeat;
+    background-position: 0 53px
+}
+
+.settled-basicinfo .cautionTip .caution-dialog .logo-img.success {
+    background: url(../images/success_3c555e8.png) no-repeat;
+    background-position: 0 53px
+}
+
+.settled-basicinfo .cautionTip .caution-dialog p {
+    margin: 28px 20px 50px
+}
+
+.settled-basicinfo .cautionTip .caution-dialog a {
+    display: block;
+    width: 140px;
+    height: 34px;
+    text-align: center;
+    line-height: 34px;
+    border-radius: 5px;
+    background: #ff2d4b;
+    color: #fff;
+    margin: 0 auto
+}
+
+.settled-basicinfo .global-mask {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.8);
+    z-index: 9999
+}
+
+.settled-basicinfo .table-wrap {
+    position: absolute;
+    top: 30px;
+    bottom: 30px;
+    left: 50%;
+    margin-left: -250px;
+    width: 550px;
+    background: #fff
+}
+
+.settled-basicinfo .table-wrap .close {
+    float: right;
+    margin-right: 10px;
+    padding: 0 5px;
+    cursor: pointer;
+    font-size: 20px
+}
+
+.settled-basicinfo .table-wrap .table-content {
+    position: absolute;
+    width: 100%;
+    top: 25px;
+    bottom: 0;
+    overflow-y: scroll
+}
+
+.settled-basicinfo .table-wrap table {
+    margin: 0 auto
+}
+
+.settled-basicinfo .table-wrap table td,.settled-basicinfo .table-wrap table th {
+    border: 1px solid #000;
+    padding: 3px
+}
+
+.widget-settled-basicinfo-imageblock {
+    position: relative;
+    background: #eee;
+    width: 110px;
+    height: 70px
+}
+
+.widget-settled-basicinfo-imageblock .btn {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    background: #666;
+    color: #fff;
+    float: left;
+    text-align: center
+}
+
+.widget-settled-basicinfo-imageblock .btn.del,.widget-settled-basicinfo-imageblock .btn.add {
+    display: none
+}
+
+.widget-settled-basicinfo-imageblock.has-del .btn {
+    width: 50%
+}
+
+.widget-settled-basicinfo-imageblock.has-del .btn.add-long {
+    display: none
+}
+
+.widget-settled-basicinfo-imageblock.has-del .btn.del,.widget-settled-basicinfo-imageblock.has-del .btn.add {
+    display: block
+}
+
+.widget-settled-basicinfo-imageblock.has-del .btn.del {
+    left: 74px;
+    border-left: 1px solid #eee
+}
+
+.widget-settled-basicinfo-imageblock .upload-btn {
+    width: 100%;
+    height: 100%
+}
+
+.widget-settled-basicinfo-imageblock .upload-btn input[type=file] {
+    width: 100%;
+    height: 100%;
+    outline: 0;
+    opacity: 0
+}
+
+.widget-settled-basicinfo-imageblock .upload-btn.empty:before,.widget-settled-basicinfo-imageblock .upload-btn.empty:after {
+    content: "";
+    position: absolute;
+    background: #ccc
+}
+
+.widget-settled-basicinfo-imageblock .upload-btn.empty:before {
+    width: 60px;
+    height: 6px;
+    left: 45px;
+    top: 62px
+}
+
+.widget-settled-basicinfo-imageblock .upload-btn.empty:after {
+    width: 6px;
+    height: 60px;
+    left: 72px;
+    top: 35px
+}
+
+.widget-settled-basicinfo-imageblock .upload-preview,.widget-settled-basicinfo-imageblock .loading {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0
+}
+
+.widget-settled-basicinfo-imageblock .upload-loading {
+    text-align: center
+}
+
+.widget-settled-basicinfo-imageblock .upload-loading img {
+    width: 125px;
+    height: 125px;
+    margin: 0 auto
+}
+
+.settled-finish {
+    background: #fff;
+    padding: 20px;
+    overflow: hidden;
+    clear: both;
+    display: none
+}
+
+.settled-finish img {
+    float: left;
+    margin-right: 30px
+}
+
+.settled-finish div {
+    float: left
+}
+
+.settled-finish p {
+    margin: 25px 0
+}
+
+.widget-merchants-settled-city-select ul {
+    display: none;
+    line-height: 30px;
+    background: #fff;
+    z-index: 999;
+    border: 1px solid #ddd;
+    width: 260px
+}
+
+.widget-merchants-settled-city-select ul .cityNavHead {
+    border-bottom: 1px solid #ddd;
+    clear: both;
+    overflow: hidden
+}
+
+.widget-merchants-settled-city-select ul .cityNavHead .cityNav {
+    float: left;
+    width: 50%;
+    text-align: center;
+    cursor: pointer
+}
+
+.widget-merchants-settled-city-select ul .cityNavHead .cityNav.city {
+    border-right: 0
+}
+
+.widget-merchants-settled-city-select ul .cityNavHead .cityNav.curr {
+    cursor: default;
+    background: #eee
+}
+
+.widget-merchants-settled-city-select ul .cityContent {
+    line-height: 24px
+}
+
+.widget-merchants-settled-city-select ul .cityContent .content {
+    display: none;
+    clear: both
+}
+
+.widget-merchants-settled-city-select ul .cityContent .content.curr {
+    display: block
+}
+
+.widget-merchants-settled-city-select ul .cityContent .content .city-row {
+    border-bottom: 1px solid #ddd;
+    clear: both;
+    overflow: hidden
+}
+
+.widget-merchants-settled-city-select ul .cityContent .content .keys {
+    padding-left: 5px;
+    width: 45px;
+    float: left;
+    color: #666
+}
+
+.widget-merchants-settled-city-select ul .cityContent .content .cities {
+    width: 210px;
+    float: left
+}
+
+.widget-merchants-settled-city-select ul .cityContent li {
+    display: inline-block;
+    height: 24px;
+    color: #000;
+    padding-left: 10px
+}
+
+.widget-merchants-settled-city-select ul .cityContent li:hover {
+    cursor: pointer;
+    color: #aaa
+}
+
+.widget-merchants-settled-city-select ul .cityContent li.curr {
+    color: #ff2d4b
+}
+
+.settled-position {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 130px;
+    bottom: 30px
+}
+
+.settled-position .settled-position-container {
+    height: 100%;
+    margin: 0 auto;
+    position: relative
+}
+
+.settled-position .settled-position-container .map-container {
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    bottom: 0
+}
+
+.settled-position .settled-position-container #positionMap {
+    position: absolute;
+    width: 100%;
+    height: 100%
+}
+
+.settled-position .settled-position-container #positionMap .BMap_mask {
+    cursor: pointer
+}
+
+.settled-position .settled-position-container .top-search {
+    position: absolute;
+    padding: 10px
+}
+
+.settled-position .settled-position-container .top-search input[type=text] {
+    height: 36px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    color: #000;
+    text-indent: .5em
+}
+
+.settled-position .settled-position-container .top-search .city-select-wrap {
+    float: left;
+    width: 260px;
+    position: relative
+}
+
+.settled-position .settled-position-container .top-search .city-select-wrap input {
+    width: 258px
+}
+
+.settled-position .settled-position-container .top-search .city-select-wrap .arrowDown {
+    display: block;
+    position: absolute;
+    top: 1px;
+    right: 0;
+    width: 36px;
+    height: 36px
+}
+
+.settled-position .settled-position-container .top-search .search-position-wrap {
+    margin-left: 10px;
+    float: left
+}
+
+.settled-position .settled-position-container .position-list-wrap {
+    position: absolute;
+    padding: 10px;
+    top: 50px;
+    padding: 10px 0 50px 10px;
+    bottom: 0;
+    left: 0
+}
+
+.map-position-list {
+    width: 258px;
+    border: 1px solid #ddd;
+    background: #fff;
+    height: 100%;
+    position: relative
+}
+
+.map-position-list .list-head {
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px solid #ddd;
+    text-align: center
+}
+
+.map-position-list .position-list {
+    position: absolute;
+    top: 30px;
+    bottom: 0;
+    width: 100%;
+    overflow: auto
+}
+
+.map-position-list .position-list div div a[title="到百度地图查看更多结果"] {
+    display: none
+}
+
+.map-position-list .position-list ol li a {
+    display: none
+}
+
+.map-position-list .position-list ol li div div:nth-child(3) {
+    display: none
+}
+
+.BMap_pop a {
+    display: none
+}
+
+.BMap_pop .BMap_center {
+    padding-bottom: 1px
+}
+
+.BMap_pop .BMap_bubble_content table tr {
+    display: none
+}
+
+.BMap_pop .BMap_bubble_content table tr:nth-child(1) {
+    display: block
+}
+
+.BMap_pop .poi-set-btn {
+    background: #ff2d4b;
+    color: #fff;
+    font-size: 12px;
+    line-height: 12px;
+    height: 24px;
+    margin-top: 10px;
+    border: 0;
+    padding: 5px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    outline: 0
+}
+
+.widget-merchants-settled-position-search {
+    position: relative
+}
+
+.widget-merchants-settled-position-search input {
+    width: 400px
+}
+
+.widget-merchants-settled-position-search button {
+    position: absolute;
+    right: 0;
+    height: 38px;
+    width: 80px;
+    background: #fff;
+    border: 1px solid #ddd
+}
+
+.widget-merchants-settled-position-search .sugList {
+    display: none;
+    position: absolute;
+    top: 38px;
+    right: 0;
+    width: 400px;
+    line-height: 30px;
+    text-indent: .5em;
+    background: #fff;
+    z-index: 999;
+    border: 1px solid #ddd;
+    overflow-y: auto
+}
+
+.widget-merchants-settled-position-search .sugList li {
+    height: 30px;
+    color: #000;
+    border-bottom: 1px solid #ddd
+}
+
+.widget-merchants-settled-position-search .sugList li:hover {
+    cursor: pointer;
+    background: #ddd
+}
+
+.widget-merchants-settled-position-search .sugList li.curr {
+    background: #ddd
+}
+
+.p-flex {
+    display: table
+}
+
+.settled-progress {
+    text-align: center;
+    line-height: 80px;
+    height: 80px
+}
+
+.settled-progress ul {
+    display: inline-block;
+    font-size: 16px
+}
+
+.settled-progress ul li {
+    color: #ccc;
+    float: left;
+    margin-right: 20px
+}
+
+.settled-progress ul li .arrow {
+    display: inline-block;
+    width: 80px;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    vertical-align: middle;
+    position: relative;
+    margin-right: 10px
+}
+
+.settled-progress ul li .arrow:after {
+    position: absolute;
+    right: 0;
+    top: -6px;
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 6px solid
+}
+
+.settled-progress ul li.active {
+    color: #666
+}
+
+body {
+    background: #f8f8f8;
+    color: #666;
+    font-size: 14px
+}
+
+.header {
+    background: #ff2d4b;
+    height: 50px;
+    position: relative
+}
+
+.header .wm-logo {
+    background-image: url(../images/logo_76a8d82.png);
+    background-repeat: no-rapeat;
+    width: 131px;
+    height: 30px;
+    display: block;
+    text-indent: -9999em;
+    background-size: 100% 100%
+}
+
+.header figure {
+    float: left;
+    margin-top: 10px;
+    position: relative
+}
+
+.header span {
+    color: #fff;
+    font-size: 16px;
+    margin-left: 30px;
+    display: inline-block;
+    line-height: 50px
+}
+
+.ui-width {
+    width: 980px;
+    margin: 0 auto
+}
+
+.red-button {
+    width: 140px;
+    height: 35px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 35px;
+    color: #fff;
+    background: #ff2d4b;
+    font-size: 15px;
+    -wbekit-appearace: none;
+    outline: 0;
+    border: 0;
+    margin: 25px 25px 0 0
+}
+
+.panel-head {
+    background: #dedede;
+    line-height: 40px;
+    text-indent: 1em
+}
+
+.panel-head span {
+    font-size: 12px
+}
+
+
+

@@ -27,4 +27,8 @@
 
 		 		$this->display();
 		 	}
+		 	function reg(){
+
+		 		$this->display();
+		 	}
 	}

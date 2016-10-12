@@ -3833,7 +3833,7 @@ define("waimai:widget/common/backtop/backtop.js", function(o, e, i) {
         }, 20)
     }
     function a(o) {
-        o = o || {}, ]o.scrollTop = o.scrollTop || 650;
+        o = o || {},o.scrollTop = o.scrollTop || 650;
         $(window).bind("scroll", function() {
             var e = $(window).scrollTop(),
                 i = $("body").height(),
