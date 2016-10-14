@@ -27,11 +27,11 @@
 
 		 		$this->display();
 		 	}
-<<<<<<< HEAD
 		 	function reg(){
 
 		 		$this->display();
-=======
+		 	}
+
 		 	function address_submit(){
 		 		$data['aname']=I('post.aname');
 		 		$data['telephone']=I('post.telephone');
@@ -69,6 +69,5 @@
 		 		if(M('address')->where($data)->save(array('ifdefault'=>'1'))){
 		 			echo json_encode(array('result'=>'ok'));
 		 		}
->>>>>>> 43e75a35e5c114035dba280e4eb95fed1f6ba5e9
 		 	}
-	}
+		}
