@@ -48,7 +48,7 @@
                 <a href="<?php echo U('Index/index');?>" class="nav-item-link">外卖</a>
                 </li>
                 <li class="nav-item " id="order">
-                <a href="<?php echo U('User/order');?>" class="nav-item-link">我的订单</a>
+                <a id="myorder" class="nav-item-link">我的订单</a>
                 </li>
                 <li class="nav-item " id="contact">
                 <a href="/waimai?qt=contact" class="nav-item-link">联系我们</a>
@@ -64,6 +64,7 @@
                         <li class='uname mn-lk-w'>
                             <a href="<?php echo U('User/setting');?>">
                             </a>
+                            <a id="logout">注销</a>
 
                         </li>
                     </ul>
@@ -92,7 +93,7 @@
         $.ajax({url:"<?php echo U('User/checklog');?>",type:'POST',data:data,success:
                 function(succ){
                         result = JSON.parse(succ);
-                        console.log(succ);
+                        //console.log(succ);
                         if(result.result=='ok'){
 
                               $('#login_user_info')[0].style.display="block";
@@ -106,6 +107,25 @@
                             
                 }
             })
+        $('#myorder').click(function(){
+            //console.log(token);
+             data = {
+            token:token
+            }
+            $.ajax({url:"<?php echo U('User/gotoinfo');?>",type:"POST",data:data,success:
+                function(succ){
+                    result = JSON.parse(succ);
+                    if(result.result=='login'){
+                        location.href = "<?php echo U('User/order');?>";
+                    }else{
+                        alert("请登录");
+                    }
+                }})
+        })
+        $('#logout').click(function(){
+            localStorage.setItem('token','');
+            window.location.href="<?php echo U('User/order');?>"; 
+        })
     </script>
 
 <!DOCTYPE html>
@@ -114,7 +134,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 
+<script type="text/javascript" src="/sjswaimai/Public/uni_armorwidget_wrapper.js"></script>
+
 <script type="text/javascript" src="/sjswaimai/Public/js/uni_armorwidget_wrapper.js"></script>
+
 
 <script type="text/javascript" src="/sjswaimai/Public/jquery-3.1.0.js"></script>
 

@@ -124,7 +124,6 @@
         })
         $('#logout').click(function(){
             localStorage.setItem('token','');
-            SetCookie('token','');
             window.location.href="<?php echo U('User/order');?>"; 
         })
     </script>
@@ -167,7 +166,7 @@
 <div class="splitter"></div>
 <div class="order-menu-body">
 <div class="menu-item">
-<div id="menu-order" class="selected">
+<div id="menu-order" >
 <span class="menu-icon order-icon"></span>
 <a href="<?php echo U('User/order');?>" class="menu-title order"><span>我的订单</span></a>
 </div>
@@ -186,7 +185,7 @@
 </div>
 
 <div class="menu-item">
-<div id="menu-left">
+<div id="menu-left" class="selected">
 <span class="menu-icon left-icon"></span>
 <a href="<?php echo U('User/count');?>" class="menu-title left"><span>我的余额</span></a>
 </div>
@@ -211,7 +210,7 @@
 </div>
 </div>
 <div><a class="cms-charlink" data-node="summary-txtLinkExpand" href="javascript:void(0);"></a></div>
-<div class="order-cards" data-node="order-cards"><div class="no-result">    <div class="no-result-image" style="padding:80px 0 20px;">        <img src="/sjswaimai/Public/user/noresult_b2672ee.png" alt="无结果" style="display:block;margin:auto;">    </div>    <div class="no-result-notice" style="text-align:center;padding-bottom: 50px;"><div class="order-notice">暂无订单, <a href="<?php echo U('Index/index');?>" class="ft-red">马上来一份</a></div></div></div></div>
+<div class="order-cards" data-node="order-cards"><div class="no-result">    <div class="no-result-image" style="padding:80px 0 20px;">        <img src="/sjswaimai/Public/user/noresult_b2672ee.png" alt="无结果" style="display:block;margin:auto;">    </div>    <div class="no-result-notice" style="text-align:center;padding-bottom: 50px;"><div class="order-notice">暂无订单, <a href="http://waimai.baidu.com/" class="ft-red">马上来一份</a></div></div></div></div>
 <div class="pagination"></div>
 <div class="callCenter" data-node="callCenter">
 </div>

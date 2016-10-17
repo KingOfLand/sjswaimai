@@ -48,7 +48,7 @@
                 <a href="<?php echo U('Index/index');?>" class="nav-item-link">外卖</a>
                 </li>
                 <li class="nav-item " id="order">
-                <a href="<?php echo U('User/order');?>" class="nav-item-link">我的订单</a>
+                <a id="myorder" class="nav-item-link">我的订单</a>
                 </li>
                 <li class="nav-item " id="contact">
                 <a href="/waimai?qt=contact" class="nav-item-link">联系我们</a>
@@ -62,8 +62,9 @@
                 <div id="login_user_info"  >
                     <ul class="login_info">
                         <li class='uname mn-lk-w'>
-                            <a href="<?php echo U('User/setting');?>"><h3></h3>
+                            <a href="<?php echo U('User/setting');?>">
                             </a>
+                            <a id="logout">注销</a>
 
                         </li>
                     </ul>
@@ -92,7 +93,7 @@
         $.ajax({url:"<?php echo U('User/checklog');?>",type:'POST',data:data,success:
                 function(succ){
                         result = JSON.parse(succ);
-                        console.log(succ);
+                        //console.log(succ);
                         if(result.result=='ok'){
 
                               $('#login_user_info')[0].style.display="block";
@@ -106,6 +107,26 @@
                             
                 }
             })
+        $('#myorder').click(function(){
+            //console.log(token);
+             data = {
+            token:token
+            }
+            $.ajax({url:"<?php echo U('User/gotoinfo');?>",type:"POST",data:data,success:
+                function(succ){
+                    result = JSON.parse(succ);
+                    if(result.result=='login'){
+                        location.href = "<?php echo U('User/order');?>";
+                    }else{
+                        alert("请登录");
+                    }
+                }})
+        })
+        $('#logout').click(function(){
+            localStorage.setItem('token','');
+            SetCookie('token','');
+            window.location.href="<?php echo U('User/order');?>"; 
+        })
     </script>
 
 <!DOCTYPE html>
@@ -129,6 +150,15 @@
 <link rel="stylesheet" type="text/css" href="/sjswaimai/Public/user/order_23df2f5.css">
 <link rel="stylesheet" type="text/css" href="/sjswaimai/Public/user/usercenter_1e040d1.css">
 </head>
+<style type="text/css">
+  div h3{
+  	margin: 20px 0;
+  	border-left: 2px solid #f6c;
+  	padding-left: 10px;
+
+  }
+
+</style>
 <body>
 
 
@@ -180,35 +210,33 @@
 </div>
 </section>
 
-<section class="usercenter-detail" id="user-order">
-<div class="summary">
-<h3 class="summary-header">全部订单</h3>
-<div class="summary-info">
-<a class="ft-blk ft-medium header-selected" href="javascript:void(0);" data-type="list" data-node="summary-anchor">全部订单(0)</a>
-<span>|</span>
-<a class="ft-blk ft-medium" href="javascript:void(0);" data-type="uncommented" data-node="summary-anchor">待评价(0)</a>
-</div>
-</div>
-<div><a class="cms-charlink" data-node="summary-txtLinkExpand" href="javascript:void(0);"></a></div>
-<div class="order-cards" data-node="order-cards"><div class="no-result">    <div class="no-result-image" style="padding:80px 0 20px;">        <img src="/sjswaimai/Public/user/noresult_b2672ee.png" alt="无结果" style="display:block;margin:auto;">    </div>    <div class="no-result-notice" style="text-align:center;padding-bottom: 50px;"><div class="order-notice">暂无订单, <a href="http://waimai.baidu.com/" class="ft-red">马上来一份</a></div></div></div></div>
-<div class="pagination"></div>
-<div class="callCenter" data-node="callCenter">
-</div>
+<section class="usercenter-detail" id="user-order"style="background-color:#fafafa">
+	<div style="margin:60px 30px ; width:200px;height:220px; float:left; border:2px solid #f6c">
+		<form id="uploadform" type="post" enctype="multipart/form-data">
+			<img style=" margin:15px 30px ;width:140px;height:140px;" src="<?php echo ($avatar); ?>" class="" id="insertintoimage" >
+			<div>
+				<input name="token" type="hidden" value="<?php echo ($value); ?>">
+				<input name="file" type="file" style="margin:0 30px" onchange="previewimage()">
+				<a style="color:#f6c;margin:0 70px" onclick="saveadvatar()">修改头像</a>
+			</div>
+			
+		</form>
+		
+	</div>
+	
+	<div style="margin:60px 30px ;width:200px; float:left;">
+		<h3 >用户名：<span id="username"></span></h3>
+		<h3 >姓名：<span id="nick"></span></h3>
+		 <div id="checkname"style="visibility:hidden;color:#f6c">六个汉字以内</div>
+		<h3 >联系方式：<span id="telephone"></span></h3>
+		 <div id="checkphone"style="visibility:hidden; color:#f6c">请填写正确的手机号</div>
+		<div class="summary">
+			<div class="summary-info">
+			<a class="ft-blk ft-medium header-selected" id="modifyinfo" data-type="list" data-node="summary-anchor">修改信息</a>
+		</div>
+	</div>
 </section>
 
-<div class="clearfix" style="_height:0px;_overflow:hidden;"></div>
-</div>
-<div class="knightCover hide" data-node="knightCover"></div>
-<div class="knightDisplay hide" data-node="knightDisplay" style="left: 161.5px; top: -109px;">
-<div class="knightTitle">
-<p>查看骑士位置</p>
-<span data-node="knightClose">×</span>
-</div>
-<div class="knightLocationBig">
-<a class="knightRefresh" data-node="knightRefresh" orderid="">刷新</a>
-<div class="knightBigMap" id="knightBigMap"></div>
-</div>
-</div>
 <!--[if IE]>
 <style type="text/css">
 	#my_addr .my_addr_edit .addr_edit_item input {
@@ -216,17 +244,141 @@
 	}
 </style>
 <![endif]-->
-<input type="hidden" id="bdstoken" name="bdstoken" value="2ecfaeee3e0b8290d57434e1189554c4">
-<input type="hidden" id="bindstoken" name="bindstoken" value="6a38KT72IEzpFpikE+wlUatGbWqgK75oF69s0QWk19NeGikVUCb3orNV1JaeepecvPk8qEC/9JopELQXtRJyovJFvxEbTXkkrVdX9sUGS+tZ5C7jkHSjB481j4WUKtUpT5cjF65iyGtKRaDfjv0yr72xMPUZfoRzE9tkE3wx9lbBlhpgzOJ84O3tFv7AEqAP0O1cfz5txNoEbCzg3jAPnckGDKeSWHNOQ7mNCUZxQm9mvTp5Mc81UAF5yZOlMVIx">
-</div>
+<script type="text/javascript">
+		
 
-<div class="mask"></div>
+        token = localStorage.getItem('token');
+       data = {
+            token:token
+       }
 
+        $.ajax({url:"<?php echo U('User/setting_info');?>",type:'POST',data:data,success:
+        	function(succ){
+                     result = JSON.parse(succ);
+                     console.log(result.info.id);
+                     $('#username').text(result.info.uname);
+                     $('#nick').text(result.info.nick);
+                     $('#telephone').text(result.info.telephone);
+                     $('#insertintoimage')[0].src=result.info.avatar;
 
-<script>
-    var Hunter = window.Hunter || {};
-    Hunter.userConfig = Hunter.userConfig || [];
-    Hunter.userConfig.push({ hid: 63163 });
+                            
+                }
+            })
+        $('#modifyinfo').click(function(){
+        	if($(this).text()=='修改信息'){
+        		$(this).text('保存信息');
+        		nick = $('#nick').text();
+        		telephone = $('#telephone').text();
+        		$('#nick').html("<input type='text' placeholder='"+nick+"'>");
+        		$('#telephone').html("<input type='text' placeholder='"+telephone+"'>");
+        	}else{
+        		
+	        		nick = $('#nick').children().val();
+	        		telephone = $('#telephone').children().val();
+	        		if(isPhone(telephone)&&rep(nick)){
+	        			$('#nick').html(nick);
+	        			$('#telephone').html(telephone);
+	        			$(this).text('修改信息');
+	        			$('#checkphone')[0].style.visibility="hidden";
+	        			$('#checkname')[0].style.visibility="hidden";
+	        			data = {
+	        				nick:nick,
+	        				telephone:telephone,
+	        				token:token
+	        			}
+	        			$.ajax({url:"<?php echo U('User/setting_modifyinfo');?>",type:'POST',data:data,success:
+        					function(succ){
+        						console.log('888');
+                     			result = JSON.parse(succ);
+                    			alert(result.result);
+                    		}
+           				 })
+
+                        
+	        		} else{
+	        			if(!isPhone(telephone)){
+	        				$('#checkphone')[0].style.visibility="visible";
+	        			}else{
+	        				$('#checkname')[0].style.visibility="visible";
+	        			}
+	        		}
+
+        		}
+        	})
+        		
+
+        	
+        	function isPhone(name) {
+	            var pattern = /^1[34578]\d{9}$/;
+	            return pattern.test(name);
+            }
+             function rep(name) {
+		 	var pattern = /^[\u4e00-\u9fa5a\w]{2,6}$/;
+ 			return pattern.test(name);
+		}
+        	
+        
+    	function previewimage(imgFile)
+		{
+				var frm = document.forms[0];
+				var imgFile = frm['file'];
+			    var filextension=imgFile.value.substring(imgFile.value.lastIndexOf("."),imgFile.value.length);
+			    filextension=filextension.toLowerCase();
+			    if ((filextension!='.jpg')&&(filextension!='.gif')&&(filextension!='.jpeg')&&(filextension!='.png')&&(filextension!='.bmp'))
+			    {
+			    alert("对不起，系统仅支持标准格式的照片，请您调整格式后重新上传，谢谢 !");
+			    imgFile.focus();
+			    }
+			    else
+			    {  
+
+	// 文件上传formData
+					var frm = document.forms[0];
+					console.log(frm);
+			    	var formData = new FormData(frm);
+			    	console.log(formData);
+		 			$.ajax({  
+				          url: "http://up.qiniu.com",  
+				          type: 'POST', 
+				          data: formData,  
+				          async: true,  
+				          cache: false,  
+				          contentType: false,  
+				          processData: false,  
+				    
+				          success: function (succ) {  
+				              
+				              console.log(succ.key);
+				              newpath = 'http://oe72gh812.bkt.clouddn.com/'+succ.key;
+			    				$('#insertintoimage')[0].src=newpath;
+				          },  
+				          error: function (returndata){  
+				              alert(returndata);  
+				          }  
+		     		});  
+			    	
+			    }	
+		}
+
+		function saveadvatar(){
+			 token = localStorage.getItem('token');
+			data={
+				newpath:newpath,
+				token:token
+			}
+			$.ajax({url:"<?php echo U('User/saveadvatar');?>",type:'POST',data:data,success:
+        	function(succ){
+                    result = JSON.parse(succ);
+                     console.log(succ);
+                    if(result.result=='ok'){
+                    	alert('修改成功');
+                    }
+                            
+                }
+            })
+
+		}
+		
 </script>
 <script type="text/javascript" src="/sjswaimai/Public/user/main_d338062.js"></script>
 <script type="text/javascript" src="/sjswaimai/Public/user/lib_fcbc5e7.js"></script>

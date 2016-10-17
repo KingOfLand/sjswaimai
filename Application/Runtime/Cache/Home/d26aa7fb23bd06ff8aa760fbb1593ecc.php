@@ -149,6 +149,8 @@
 <link rel="stylesheet" type="text/css" href="/sjswaimai/Public/user/menu_4e4a7c2.css">
 <link rel="stylesheet" type="text/css" href="/sjswaimai/Public/user/order_23df2f5.css">
 <link rel="stylesheet" type="text/css" href="/sjswaimai/Public/user/usercenter_1e040d1.css">
+<link rel="stylesheet" type="text/css" href="/sjswaimai/Public/css/menucommon_1f2eceb.css"/>
+<link rel="stylesheet" type="text/css" href="/sjswaimai/Public/css/menu_934e59e.css"/>
 </head>
 <body>
 
@@ -167,7 +169,7 @@
 <div class="splitter"></div>
 <div class="order-menu-body">
 <div class="menu-item">
-<div id="menu-order" class="selected">
+<div id="menu-order" >
 <span class="menu-icon order-icon"></span>
 <a href="<?php echo U('User/order');?>" class="menu-title order"><span>我的订单</span></a>
 </div>
@@ -179,7 +181,7 @@
 </div>
 </div>
 <div class="menu-item">
-<div id="menu-favorite">
+<div id="menu-favorite" class="selected">
 <span class="menu-icon favorite-icon"></span>
 <a href="<?php echo U('User/collect');?>" class="menu-title favorite"><span>收藏夹</span></a>
 </div>
@@ -202,20 +204,22 @@
 </section>
 
 <section class="usercenter-detail" id="user-order">
-<div class="summary">
-<h3 class="summary-header">全部订单</h3>
-<div class="summary-info">
-<a class="ft-blk ft-medium header-selected" href="javascript:void(0);" data-type="list" data-node="summary-anchor">全部订单(0)</a>
-<span>|</span>
-<a class="ft-blk ft-medium" href="javascript:void(0);" data-type="uncommented" data-node="summary-anchor">待评价(0)</a>
-</div>
-</div>
-<div><a class="cms-charlink" data-node="summary-txtLinkExpand" href="javascript:void(0);"></a></div>
-<div class="order-cards" data-node="order-cards"><div class="no-result">    <div class="no-result-image" style="padding:80px 0 20px;">        <img src="/sjswaimai/Public/user/noresult_b2672ee.png" alt="无结果" style="display:block;margin:auto;">    </div>    <div class="no-result-notice" style="text-align:center;padding-bottom: 50px;"><div class="order-notice">暂无订单, <a href="<?php echo U('Index/index');?>" class="ft-red">马上来一份</a></div></div></div></div>
-<div class="pagination"></div>
-<div class="callCenter" data-node="callCenter">
-</div>
+	<?php if(is_array($collect)): $i = 0; $__LIST__ = $collect;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div style="width:180px;height:220px;margin:0 9px;background-color:#fafafa;float:left;">
+			<img style="width:180px;height:110px;"src="<?php echo ($vo["log_url"]); ?>">
+			<h1><?php echo ($vo["sname"]); if(($vo["stat"]) == "1"): ?>&hearts;&deg;&deg;&deg;&deg;<?php endif; ?>
+						   <?php if(($vo["stat"]) == "2"): ?>&hearts;&hearts;&deg;&deg;&deg;<?php endif; ?>
+						   <?php if(($vo["stat"]) == "3"): ?>&hearts;&hearts;&hearts;&deg;&deg;<?php endif; ?>
+						   <?php if(($vo["stat"]) == "4"): ?>&hearts;&hearts;&hearts;&hearts;&deg;<?php endif; ?>
+						   <?php if(($vo["stat"]) == "5"): ?>&hearts;&hearts;&hearts;&hearts;&hearts;<?php endif; ?>
+						</h1>
+			<h3 style="margin:12px">电话:<?php echo ($vo["telephone"]); ?></h3>
+			<center>
+				起送金额<span style="font:#ccc;font-size:14px"><?php echo ($vo["least"]); ?></span>元<br>配送费<span style="font:#ccc;font-size:14px"><?php echo ($vo["distribute"]); ?></span>元
+			</center>
+		</div><?php endforeach; endif; else: echo "" ;endif; ?>
+	
 </section>
+
 
 <div class="clearfix" style="_height:0px;_overflow:hidden;"></div>
 </div>

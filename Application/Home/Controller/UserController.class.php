@@ -2,8 +2,10 @@
 
 	namespace Home\Controller;
 	use Think\controller;
+	require './Public/php-sdk-7.0.8/autoload.php';
 
-	class UserController extends controller{
+
+	class UserController extends controller {
 		    public function checklog(){
 		    	$token = I('token');
 		    	$arr=M('token')->where(array('token'=>$token))->select();
@@ -12,27 +14,41 @@
 		    	}else{
 		    		if($arr[0]['pass_time']<time()){
 		    		echo json_encode(array('result'=>'pass_timeout'));
-		    	}else{
-		    		$map=D('User')->get_user($token);
-		    		echo json_encode(array('result'=>'ok','nick'=>$map['nick']));
-		    	}
+			    	}else{
+			    		cookie('token',$token);
+			    		$map=D('User')->get_user($token);
+			    		echo json_encode(array('result'=>'ok','nick'=>$map['nick']));
+			    	}
 		    	}
 		    	
 		    }
-		 	
+		 	function gotoinfo(){
+		 		$token=I('token');
+		 		$arr=M('token')->where(array('token'=>$token))->select();
+		 		if($arr[0]['pass_time']>time()){
+		 			echo json_encode(array('result'=>'login'));
+		 		}else {
+		 			echo json_encode(array('result'=>'logout'));
+		 		}
+		 	}
 		 	function order(){
-		 		$token=I('post.token');
+		 		$token=I('token');
 		 		$this->display();
 		 	}
 		 	function address(){
-		 		$token = I('token');
-		 		
-		 		$arr = M('address')->select();
+		 		$token = cookie('token');
+		 		$map=D('User')->get_user($token);
+		 		$arr = M('address')->where(array('uid'=>$map['id']))->select();
 		 		$this->assign("address",$arr);
-
+		 		
 		 		$this->display();
 		 	}
 		 	function collect(){
+		 		$token = cookie('token');
+		 		$map=D('User')->get_user($token);
+		 		$arr = M('store')->where(array('uid'=>$map['id']))->select();
+		 		$this->assign("collect",$arr);
+		 		
 
 		 		$this->display();
 		 	}
@@ -41,14 +57,54 @@
 		 		$this->display();
 		 	}
 		 	function setting(){
+		 		
+		 		$bucket = 'rockerh';
+				$accessKey = '_NhNW58wxLaH6GRQ8otOV1FGt_kWNB3tcNYqGgX_';
+				$secretKey = 'uWs52dzbKP-0eKYSGNtfqnzPKGopr_0LjwyA6TVF';
+				$auth = new  \Qiniu\Auth($accessKey, $secretKey);
 
+				$upToken = $auth->uploadToken($bucket);
+				/*
+				$policy = array(
+			      'callbackUrl' => 'http://samples.app.ucai.cn/php/ZX/callback.php',
+			      'callbackBody' => 'filename=$(fname)&filesize=$(fsize)'
+			  	);
+			  	$uptoken = $auth->uploadToken($bucket, null, 3600, $policy);
+			  	*/
+			  	$uptoken = $auth->uploadToken($bucket, null, 3600);
+		 		$this->assign('value',$uptoken);
 		 		$this->display();
 		 	}
-<<<<<<< HEAD
-		 	function reg(){
+		 	function setting_info(){
+		 		$token=I('token');
+		 		
+		 		$map=D('User')->get_user($token);
+		 		$arr=M('user')->where(array('id'=>$map['id']))->select();
+		 		
+		 		echo json_encode(array('info'=>$arr[0]));
+		 	}
+		 	function setting_modifyinfo(){
+		 		$nick = I('nick');
+		 		$telephone = I('telephone');
+		 		$token = I('token');
+		 		$map=D('User')->get_user($token);
+		 		if(M('user')->where(array('id'=>$map['id']))->save(array('nick'=>$nick,'telephone'=>$telephone))){
+		 			echo json_encode(array('result'=>'修改成功'));
+		 		}
+		 	}
 
-		 		$this->display();
-=======
+		 	function saveadvatar(){
+		 		$token=I('token');
+		 		$advatar=I('newpath');
+		 		$map=D('User')->get_user($token);
+		 	
+		 		if(M('user')->where(array('id'=>$map['id']))->save(array('avatar'=>$advatar))){
+		 			echo json_encode(array('result'=>'no'));
+		 		}else{
+		 			echo json_encode(array('result'=>'ok'));
+		 		}
+		 	}
+
 		 	function address_submit(){
 		 		$data['aname']=I('post.aname');
 		 		$data['telephone']=I('post.telephone');
@@ -86,7 +142,7 @@
 		 		if(M('address')->where($data)->save(array('ifdefault'=>'1'))){
 		 			echo json_encode(array('result'=>'ok'));
 		 		}
->>>>>>> 43e75a35e5c114035dba280e4eb95fed1f6ba5e9
+
 		 	}
 
 		 	function register(){
@@ -108,6 +164,7 @@
 		     		$uid=$user[0]['id'];
 		     		// echo $uid;
 		     		$token=D('User')->get_token($uid);
+		     		cookie('token',$token);
 		     		if($token){
 		     	    //token exist
 		     			// echo $uid;
@@ -147,6 +204,7 @@
 			     		$uid=$arr[0]['id'];
 			     		if($add_token=D('User')->add_token($uid)){
 			     			$token=D('User')->get_token($uid);
+			     			cookie('token',$token);
 			     			echo json_encode(array('result'=>'ok','token'=>$token));
 			     		}
 			     		   
