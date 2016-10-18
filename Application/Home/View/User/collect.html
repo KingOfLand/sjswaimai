@@ -20,6 +20,9 @@
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/user/usercenter_1e040d1.css">
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/menucommon_1f2eceb.css"/>
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/menu_934e59e.css"/>
+<style type="text/css">
+
+</style>
 </head>
 <body>
 
@@ -74,18 +77,29 @@
 
 <section class="usercenter-detail" id="user-order">
 	<volist name="collect" id="vo">
-		<div style="width:180px;height:220px;margin:0 9px;background-color:#fafafa;float:left;">
+		
+		<div class="collectfunction" style="width:180px;height:280px;margin:0 9px;background-color:#fafafa;float:left;">
+			
 			<img style="width:180px;height:110px;"src="{$vo.log_url}">
-			<h1>{$vo.sname}<eq name="vo.stat" value="1">&hearts;&deg;&deg;&deg;&deg;</eq>
-						   <eq name="vo.stat" value="2">&hearts;&hearts;&deg;&deg;&deg;</eq>
-						   <eq name="vo.stat" value="3">&hearts;&hearts;&hearts;&deg;&deg;</eq>
-						   <eq name="vo.stat" value="4">&hearts;&hearts;&hearts;&hearts;&deg;</eq>
-						   <eq name="vo.stat" value="5">&hearts;&hearts;&hearts;&hearts;&hearts;</eq>
+			<h1 style="margin:0 10px;">{$vo.sname}</h1>
+			<center >
+				<h1>
+						   <eq name="vo.star" value="1">&hearts;&deg;&deg;&deg;&deg;</eq>
+						   <eq name="vo.star" value="2">&hearts;&hearts;&deg;&deg;&deg;</eq>
+						   <eq name="vo.star" value="3">&hearts;&hearts;&hearts;&deg;&deg;</eq>
+						   <eq name="vo.star" value="4">&hearts;&hearts;&hearts;&hearts;&deg;</eq>
+						   <eq name="vo.star" value="5">&hearts;&hearts;&hearts;&hearts;&hearts;</eq>
 						</h1>
+			</center>
+						
 			<h3 style="margin:12px">电话:{$vo.telephone}</h3>
 			<center>
-				起送金额<span style="font:#ccc;font-size:14px">{$vo.least}</span>元<br>配送费<span style="font:#ccc;font-size:14px">{$vo.distribute}</span>元
+				起送金额<span style="color:#666;font-size:24px">{$vo.least}</span>元<br>配送费<span style="color:#666;font-size:24px">{$vo.distribute}</span>元
 			</center>
+			<div class="canclecollect"style="position:relative;bottom:250px;left:110px;background:#f6c;width:60px;padding:6px;display:none;">
+				<a class='deletecollect' style="color:white">取消收藏</a>
+				<div style="display:none">{$vo.collect_id}</div> 
+			</div>
 		</div>
 	</volist>
 	
@@ -120,9 +134,31 @@
 
 
 <script>
-    var Hunter = window.Hunter || {};
-    Hunter.userConfig = Hunter.userConfig || [];
-    Hunter.userConfig.push({ hid: 63163 });
+   ( $('.collectfunction')).mouseover(function(){
+    	$(this).children().eq(5)[0].style.display='block';
+    })
+    $('.collectfunction').mouseout(function(){
+    	$(this).children().eq(5)[0].style.display='none';
+    })
+    $('.deletecollect').click(function(){
+    	sid=$(this).next().text();
+    	data = {
+    		sid:sid
+    	}
+    	$.ajax({url:"{:U('User/delete_collect')}",type:'POST',data:data,success:function(succ){
+	            		
+	                    result = JSON.parse(succ);
+	                    console.log(result);
+	                    if(result.result=='ok'){
+	                          alert('删除成功');
+	                          
+	                          $(this).remove();
+	                         
+	                    }else{alert('删除失败！');}
+	            }
+	        })
+    })
+
 </script>
 <script type="text/javascript" src="__PUBLIC__/user/main_d338062.js"></script>
 <script type="text/javascript" src="__PUBLIC__/user/lib_fcbc5e7.js"></script>

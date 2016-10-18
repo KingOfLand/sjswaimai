@@ -124,6 +124,7 @@
         })
         $('#logout').click(function(){
             localStorage.setItem('token','');
+            SetCookie('token','');
             window.location.href="<?php echo U('User/order');?>"; 
         })
     </script>

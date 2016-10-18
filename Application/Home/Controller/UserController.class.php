@@ -46,12 +46,41 @@
 		 	function collect(){
 		 		$token = cookie('token');
 		 		$map=D('User')->get_user($token);
-		 		$arr = M('store')->where(array('uid'=>$map['id']))->select();
+		 		$arr = M('collect')->where(array('uid'=>$map['id']))->select();
 		 		$this->assign("collect",$arr);
 		 		
 
 		 		$this->display();
 		 	}
+
+		 	function add_collect(){
+		 		$token=cookie('token');
+		 		$sid=I('sid');
+		 		$map=D('User')->get_user($token);
+		 		$store=M('store')->where(array('sid'=>$sid))->select();
+		 		$data['uid']=$map['uid'];
+		 		$data['log_url']=$store[0]['log_url'];
+		 		$data['star']=$store[0]['stars'];
+		 		$data['telephone']=$store[0]['telephone'];
+		 		$data['store_id']=$sid;
+		 		$data['least']=$store[0]['least'];
+		 		$data['distribute']=$store[0]['distribute'];
+		 		if(M('collect')->add($data)){
+		 			echo json_encode(array('result'=>'ok'));
+		 		}
+		 	}
+		 	function delete_collect(){
+		 		$token=cookie('token');
+		 		$sid=I('sid');
+		 		$map=D('User')->get_user($token);
+		 		//echo json_encode(array('result'=>M('collect')->where(array('collect_id'=>$sid,'uid'=>$map['id']))->delete()));
+		 		if(M('store')->where(array('result'=>M('collect')->where(array('collect_id'=>$sid,'uid'=>$map['id']))->delete()))){
+		 		echo json_encode(array('result'=>'ok'));
+		 		}else{
+		 			echo json_encode(array('result'=>'no'));
+		 		}
+		 	}
+
 		 	function count(){
 
 		 		$this->display();

@@ -151,6 +151,9 @@
 <link rel="stylesheet" type="text/css" href="/sjswaimai/Public/user/usercenter_1e040d1.css">
 <link rel="stylesheet" type="text/css" href="/sjswaimai/Public/css/menucommon_1f2eceb.css"/>
 <link rel="stylesheet" type="text/css" href="/sjswaimai/Public/css/menu_934e59e.css"/>
+<style type="text/css">
+
+</style>
 </head>
 <body>
 
@@ -204,18 +207,28 @@
 </section>
 
 <section class="usercenter-detail" id="user-order">
-	<?php if(is_array($collect)): $i = 0; $__LIST__ = $collect;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div style="width:180px;height:220px;margin:0 9px;background-color:#fafafa;float:left;">
+	<?php if(is_array($collect)): $i = 0; $__LIST__ = $collect;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div class="collectfunction" style="width:180px;height:280px;margin:0 9px;background-color:#fafafa;float:left;">
+			
 			<img style="width:180px;height:110px;"src="<?php echo ($vo["log_url"]); ?>">
-			<h1><?php echo ($vo["sname"]); if(($vo["stat"]) == "1"): ?>&hearts;&deg;&deg;&deg;&deg;<?php endif; ?>
-						   <?php if(($vo["stat"]) == "2"): ?>&hearts;&hearts;&deg;&deg;&deg;<?php endif; ?>
-						   <?php if(($vo["stat"]) == "3"): ?>&hearts;&hearts;&hearts;&deg;&deg;<?php endif; ?>
-						   <?php if(($vo["stat"]) == "4"): ?>&hearts;&hearts;&hearts;&hearts;&deg;<?php endif; ?>
-						   <?php if(($vo["stat"]) == "5"): ?>&hearts;&hearts;&hearts;&hearts;&hearts;<?php endif; ?>
+			<h1 style="margin:0 10px;"><?php echo ($vo["sname"]); ?></h1>
+			<center >
+				<h1>
+						   <?php if(($vo["star"]) == "1"): ?>&hearts;&deg;&deg;&deg;&deg;<?php endif; ?>
+						   <?php if(($vo["star"]) == "2"): ?>&hearts;&hearts;&deg;&deg;&deg;<?php endif; ?>
+						   <?php if(($vo["star"]) == "3"): ?>&hearts;&hearts;&hearts;&deg;&deg;<?php endif; ?>
+						   <?php if(($vo["star"]) == "4"): ?>&hearts;&hearts;&hearts;&hearts;&deg;<?php endif; ?>
+						   <?php if(($vo["star"]) == "5"): ?>&hearts;&hearts;&hearts;&hearts;&hearts;<?php endif; ?>
 						</h1>
+			</center>
+						
 			<h3 style="margin:12px">电话:<?php echo ($vo["telephone"]); ?></h3>
 			<center>
-				起送金额<span style="font:#ccc;font-size:14px"><?php echo ($vo["least"]); ?></span>元<br>配送费<span style="font:#ccc;font-size:14px"><?php echo ($vo["distribute"]); ?></span>元
+				起送金额<span style="color:#666;font-size:24px"><?php echo ($vo["least"]); ?></span>元<br>配送费<span style="color:#666;font-size:24px"><?php echo ($vo["distribute"]); ?></span>元
 			</center>
+			<div class="canclecollect"style="position:relative;bottom:250px;left:110px;background:#f6c;width:60px;padding:6px;display:none;">
+				<a class='deletecollect' style="color:white">取消收藏</a>
+				<div style="display:none"><?php echo ($vo["collect_id"]); ?></div> 
+			</div>
 		</div><?php endforeach; endif; else: echo "" ;endif; ?>
 	
 </section>
@@ -249,9 +262,31 @@
 
 
 <script>
-    var Hunter = window.Hunter || {};
-    Hunter.userConfig = Hunter.userConfig || [];
-    Hunter.userConfig.push({ hid: 63163 });
+   ( $('.collectfunction')).mouseover(function(){
+    	$(this).children().eq(5)[0].style.display='block';
+    })
+    $('.collectfunction').mouseout(function(){
+    	$(this).children().eq(5)[0].style.display='none';
+    })
+    $('.deletecollect').click(function(){
+    	sid=$(this).next().text();
+    	data = {
+    		sid:sid
+    	}
+    	$.ajax({url:"<?php echo U('User/delete_collect');?>",type:'POST',data:data,success:function(succ){
+	            		
+	                    result = JSON.parse(succ);
+	                    console.log(result);
+	                    if(result.result=='ok'){
+	                          alert('删除成功');
+	                          
+	                          $(this).remove();
+	                         
+	                    }else{alert('删除失败！');}
+	            }
+	        })
+    })
+
 </script>
 <script type="text/javascript" src="/sjswaimai/Public/user/main_d338062.js"></script>
 <script type="text/javascript" src="/sjswaimai/Public/user/lib_fcbc5e7.js"></script>
