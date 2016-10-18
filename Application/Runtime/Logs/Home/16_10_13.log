@@ -1,0 +1,162 @@
+[ 2016-10-13T23:23:23+08:00 ] ::1 /sjswaimai/index.php/Home/User/address.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007706s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000816s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000890s ]
+SQL: SHOW COLUMNS FROM `tb_address` [ RunTime:0.0285s ]
+SQL: SELECT * FROM `tb_address`  [ RunTime:0.0087s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(./Application/Home/View/footer.html): failed to open stream: No such file or directory /Users/hejiaxing/work/sjswaimai/ThinkPHP/Library/Think/Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002183s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002251s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /Users/hejiaxing/work/sjswaimai/Application/Runtime/Cache/Home/91ff2879d03c8adb319575e54346df8a.php 第 21 行.
+NOTIC: [8] Use of undefined constant index - assumed 'index' /Users/hejiaxing/work/sjswaimai/Application/Runtime/Cache/Home/91ff2879d03c8adb319575e54346df8a.php 第 21 行.
+NOTIC: [2] Division by zero /Users/hejiaxing/work/sjswaimai/Application/Runtime/Cache/Home/91ff2879d03c8adb319575e54346df8a.php 第 21 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.044755s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.044884s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001812s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001849s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003891s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004065s ]
+
+[ 2016-10-13T23:23:24+08:00 ] ::1 /sjswaimai/index.php/Home/User/checklog.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000605s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000649s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000741s ]
+SQL: SHOW COLUMNS FROM `tb_token` [ RunTime:0.0113s ]
+SQL: SELECT * FROM `tb_token` WHERE `token` = 'c2d576290a4f793d76cb267dfd8c6108'  [ RunTime:0.0019s ]
+SQL: SELECT * FROM `tb_token` WHERE `token` = 'c2d576290a4f793d76cb267dfd8c6108'  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tb_user` [ RunTime:0.0066s ]
+SQL: SELECT * FROM `tb_user` WHERE `id` = 1  [ RunTime:0.0069s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000884s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001004s ]
+
+[ 2016-10-13T23:23:26+08:00 ] ::1 /sjswaimai/index.php/Home/User/collect.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000209s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000262s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000290s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(./Application/Home/View/footer.html): failed to open stream: No such file or directory /Users/hejiaxing/work/sjswaimai/ThinkPHP/Library/Think/Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000093s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000150s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /Users/hejiaxing/work/sjswaimai/Application/Runtime/Cache/Home/d26aa7fb23bd06ff8aa760fbb1593ecc.php 第 21 行.
+NOTIC: [8] Use of undefined constant index - assumed 'index' /Users/hejiaxing/work/sjswaimai/Application/Runtime/Cache/Home/d26aa7fb23bd06ff8aa760fbb1593ecc.php 第 21 行.
+NOTIC: [2] Division by zero /Users/hejiaxing/work/sjswaimai/Application/Runtime/Cache/Home/d26aa7fb23bd06ff8aa760fbb1593ecc.php 第 21 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009925s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009957s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000118s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000148s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000408s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000459s ]
+
+[ 2016-10-13T23:23:26+08:00 ] ::1 /sjswaimai/index.php/Home/User/checklog.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000035s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002479s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000853s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000974s ]
+SQL: SHOW COLUMNS FROM `tb_token` [ RunTime:0.0071s ]
+SQL: SELECT * FROM `tb_token` WHERE `token` = 'c2d576290a4f793d76cb267dfd8c6108'  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tb_token` WHERE `token` = 'c2d576290a4f793d76cb267dfd8c6108'  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `tb_user` [ RunTime:0.0084s ]
+SQL: SELECT * FROM `tb_user` WHERE `id` = 1  [ RunTime:0.0004s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002540s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002638s ]
+
+[ 2016-10-13T23:23:27+08:00 ] ::1 /sjswaimai/index.php/Home/User/count.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000220s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000276s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000309s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(./Application/Home/View/footer.html): failed to open stream: No such file or directory /Users/hejiaxing/work/sjswaimai/ThinkPHP/Library/Think/Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000063s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000105s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /Users/hejiaxing/work/sjswaimai/Application/Runtime/Cache/Home/11a61c3fbd8a823a294752d80440e309.php 第 21 行.
+NOTIC: [8] Use of undefined constant index - assumed 'index' /Users/hejiaxing/work/sjswaimai/Application/Runtime/Cache/Home/11a61c3fbd8a823a294752d80440e309.php 第 21 行.
+NOTIC: [2] Division by zero /Users/hejiaxing/work/sjswaimai/Application/Runtime/Cache/Home/11a61c3fbd8a823a294752d80440e309.php 第 21 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008025s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008055s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000227s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000253s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000622s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000683s ]
+
+[ 2016-10-13T23:23:27+08:00 ] ::1 /sjswaimai/index.php/Home/User/checklog.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000400s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000559s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000623s ]
+SQL: SHOW COLUMNS FROM `tb_token` [ RunTime:0.0057s ]
+SQL: SELECT * FROM `tb_token` WHERE `token` = 'c2d576290a4f793d76cb267dfd8c6108'  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `tb_token` WHERE `token` = 'c2d576290a4f793d76cb267dfd8c6108'  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `tb_user` [ RunTime:0.0063s ]
+SQL: SELECT * FROM `tb_user` WHERE `id` = 1  [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000634s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000714s ]
+
+[ 2016-10-13T23:23:29+08:00 ] ::1 /sjswaimai/index.php/Home/User/setting.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000209s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000273s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000303s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(./Application/Home/View/footer.html): failed to open stream: No such file or directory /Users/hejiaxing/work/sjswaimai/ThinkPHP/Library/Think/Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000099s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000218s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /Users/hejiaxing/work/sjswaimai/Application/Runtime/Cache/Home/14f60462ca9c022e1952228a1c020a58.php 第 21 行.
+NOTIC: [8] Use of undefined constant index - assumed 'index' /Users/hejiaxing/work/sjswaimai/Application/Runtime/Cache/Home/14f60462ca9c022e1952228a1c020a58.php 第 21 行.
+NOTIC: [2] Division by zero /Users/hejiaxing/work/sjswaimai/Application/Runtime/Cache/Home/14f60462ca9c022e1952228a1c020a58.php 第 21 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008376s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008406s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000114s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000138s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000406s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000446s ]
+
+[ 2016-10-13T23:23:30+08:00 ] ::1 /sjswaimai/index.php/Home/User/checklog.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000250s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000934s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000538s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000598s ]
+SQL: SHOW COLUMNS FROM `tb_token` [ RunTime:0.0034s ]
+SQL: SELECT * FROM `tb_token` WHERE `token` = 'c2d576290a4f793d76cb267dfd8c6108'  [ RunTime:0.0011s ]
+SQL: SELECT * FROM `tb_token` WHERE `token` = 'c2d576290a4f793d76cb267dfd8c6108'  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tb_user` [ RunTime:0.0031s ]
+SQL: SELECT * FROM `tb_user` WHERE `id` = 1  [ RunTime:0.0002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000601s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000654s ]
+

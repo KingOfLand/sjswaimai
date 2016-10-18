@@ -48,7 +48,11 @@
                 <a href="<?php echo U('Index/index');?>" class="nav-item-link">外卖</a>
                 </li>
                 <li class="nav-item " id="order">
+<<<<<<< HEAD
                 <a href="<?php echo U('User/order');?>" class="nav-item-link">我的订单</a>
+=======
+                <a id="myorder" class="nav-item-link">我的订单</a>
+>>>>>>> 649602554f2fe7e95ab6b7dd7b1ac3e4b489a1b0
                 </li>
                 <li class="nav-item " id="contact">
                 <a href="/waimai?qt=contact" class="nav-item-link">联系我们</a>
@@ -64,6 +68,10 @@
                         <li class='uname mn-lk-w'>
                             <a href="<?php echo U('User/setting');?>">
                             </a>
+<<<<<<< HEAD
+=======
+                            <a id="logout">注销</a>
+>>>>>>> 649602554f2fe7e95ab6b7dd7b1ac3e4b489a1b0
 
                         </li>
                     </ul>
@@ -92,7 +100,11 @@
         $.ajax({url:"<?php echo U('User/checklog');?>",type:'POST',data:data,success:
                 function(succ){
                         result = JSON.parse(succ);
+<<<<<<< HEAD
                         console.log(succ);
+=======
+                        //console.log(succ);
+>>>>>>> 649602554f2fe7e95ab6b7dd7b1ac3e4b489a1b0
                         if(result.result=='ok'){
 
                               $('#login_user_info')[0].style.display="block";
@@ -106,6 +118,29 @@
                             
                 }
             })
+<<<<<<< HEAD
+=======
+        $('#myorder').click(function(){
+            //console.log(token);
+             data = {
+            token:token
+            }
+            $.ajax({url:"<?php echo U('User/gotoinfo');?>",type:"POST",data:data,success:
+                function(succ){
+                    result = JSON.parse(succ);
+                    if(result.result=='login'){
+                        location.href = "<?php echo U('User/order');?>";
+                    }else{
+                        alert("请登录");
+                    }
+                }})
+        })
+        $('#logout').click(function(){
+            localStorage.setItem('token','');
+            SetCookie('token','');
+            window.location.href="<?php echo U('User/order');?>"; 
+        })
+>>>>>>> 649602554f2fe7e95ab6b7dd7b1ac3e4b489a1b0
     </script>
 
 <!DOCTYPE html>
@@ -190,7 +225,11 @@
 </div>
 </div>
 <div><a class="cms-charlink" data-node="summary-txtLinkExpand" href="javascript:void(0);"></a></div>
+<<<<<<< HEAD
 <div class="order-cards" data-node="order-cards"><div class="no-result">    <div class="no-result-image" style="padding:80px 0 20px;">        <img src="/sjswaimai/Public/user/noresult_b2672ee.png" alt="无结果" style="display:block;margin:auto;">    </div>    <div class="no-result-notice" style="text-align:center;padding-bottom: 50px;"><div class="order-notice">暂无订单, <a href="http://waimai.baidu.com/" class="ft-red">马上来一份</a></div></div></div></div>
+=======
+<div class="order-cards" data-node="order-cards"><div class="no-result">    <div class="no-result-image" style="padding:80px 0 20px;">        <img src="/sjswaimai/Public/user/noresult_b2672ee.png" alt="无结果" style="display:block;margin:auto;">    </div>    <div class="no-result-notice" style="text-align:center;padding-bottom: 50px;"><div class="order-notice">暂无订单, <a href="<?php echo U('Index/index');?>" class="ft-red">马上来一份</a></div></div></div></div>
+>>>>>>> 649602554f2fe7e95ab6b7dd7b1ac3e4b489a1b0
 <div class="pagination"></div>
 <div class="callCenter" data-node="callCenter">
 </div>
@@ -239,6 +278,7 @@
 <script type="text/javascript" src="/sjswaimai/Public/user/order_d05513d.js"></script>
 
 
+<<<<<<< HEAD
 </body></html>
 
  <footer id="baiducopy">
@@ -292,3 +332,6 @@
     <div class="mask"></div>
 </body>
 </html>
+=======
+</body></html>
+>>>>>>> 649602554f2fe7e95ab6b7dd7b1ac3e4b489a1b0
