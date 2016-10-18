@@ -87,9 +87,6 @@
 		 			echo json_encode(array('result'=>'ok'));
 		 		}
 		 	}
-<<<<<<< HEAD
-		}
-=======
 
 		 	function register(){
 		 		layout(false);
@@ -161,4 +158,4 @@
      
 				}
 			}
->>>>>>> cdbabc04081a6766d4607514ebc8ec0f0a95bef8
+
