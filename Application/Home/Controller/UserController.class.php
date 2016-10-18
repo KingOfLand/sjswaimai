@@ -104,6 +104,7 @@
 		 		$this->assign('value',$uptoken);
 		 		$this->display();
 		 	}
+<<<<<<< HEAD
 		 	function setting_info(){
 		 		$token=I('token');
 		 		
@@ -134,6 +135,13 @@
 		 		}
 		 	}
 
+=======
+		 	function reg(){
+
+		 		$this->display();
+		 	}
+
+>>>>>>> b07f34f026185f02f5e9fea5282badfd175596b5
 		 	function address_submit(){
 		 		$data['aname']=I('post.aname');
 		 		$data['telephone']=I('post.telephone');
@@ -171,8 +179,14 @@
 		 		if(M('address')->where($data)->save(array('ifdefault'=>'1'))){
 		 			echo json_encode(array('result'=>'ok'));
 		 		}
+<<<<<<< HEAD
 
+=======
+>>>>>>> b07f34f026185f02f5e9fea5282badfd175596b5
 		 	}
+<<<<<<< HEAD
+		}
+=======
 
 		 	function register(){
 		 		layout(false);
@@ -246,3 +260,4 @@
      
 				}
 			}
+>>>>>>> cdbabc04081a6766d4607514ebc8ec0f0a95bef8
